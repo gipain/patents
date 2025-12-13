@@ -1,0 +1,93 @@
+%% Mermaid Level-0 DFD for NTI Patents System
+flowchart LR
+  %% Styling
+  classDef extEntity fill:#f8f9c6,stroke:#333,stroke-width:1px;
+  classDef process fill:#cfe8ff,stroke:#0b5394,stroke-width:1px;
+  classDef store fill:#ffe4b5,stroke:#b45f06,stroke-width:1px;
+  classDef note fill:#f3f3f3,stroke:#666,stroke-dasharray: 3 3;
+
+  %% External entities
+  User["User (Browser)"]:::extEntity
+  Auth["External Auth / SSO"]:::extEntity
+  S3["Object Storage (S3)"]:::extEntity
+  Email["Email Service"]:::extEntity
+
+  %% System processes (Level 0)
+  subgraph SYSTEM["NTI Patents System"]
+    direction TB
+    P1["P1: Search / Query"]:::process
+    P2["P2: Patent CRUD"]:::process
+    P3["P3: Bookmarks & Notes"]:::process
+    P4["P4: Export / Report"]:::process
+    P5["P5: Dashboard & Analytics"]:::process
+    P6["P6: Auth / Token Validation"]:::process
+    P7["P7: Background Worker / Queue"]:::process
+  end
+
+  %% Data stores
+  subgraph STORES["Data Stores"]
+    direction TB
+    D1["D1: Patents"]:::store
+    D2["D2: Authors"]:::store
+    D3["D3: Documents"]:::store
+    D4["D4: Categories"]:::store
+    D5["D5: Bookmarks"]:::store
+    D6["D6: SearchHistory"]:::store
+    D7["D7: Exports / Files"]:::store
+    D8["D8: SearchIndex"]:::store
+  end
+
+  %% Main flows
+  User -->|"SearchQuery (UI)"| P1
+  P1 -->|"Query Index / DB"| D8
+  P1 -->|"Return Results (JSON)"| User
+  P1 -->|"Save SearchHistory"| D6
+
+  User -->|"Create / Edit / Delete"| P2
+  P2 -->|"Persist Patent"| D1
+  P2 -->|"Update Authors"| D2
+  P2 -->|"Attach Documents"| D3
+  P2 -->|"Return Result"| User
+
+  User -->|"Bookmark Request"| P3
+  P3 -->|"Persist Bookmark"| D5
+  P3 -->|"Return Status"| User
+
+  User -->|"Request Export (CSV/JSON/BIB)"| P4
+  P4 -->|"Enqueue Export Job"| P7
+  P7 -->|"Write Export File"| D7
+  P7 -->|"Store Object"| S3
+  P7 -->|"Notify (link)"| User
+
+  User -->|"Open Dashboard"| P5
+  P5 -->|"Aggregate Data"| D1
+  P5 -->|"Aggregate Data"| D2
+  P5 -->|"Aggregate Data"| D3
+  P5 -->|"Aggregate Data"| D6
+  P5 -->|"Return Stats"| User
+
+  %% Auth flows
+  User -->|"Login / Token"| P6
+  P6 -->|"Validate Token"| Auth
+  P6 -->|"Issue Token"| User
+  P2 -->|"Authorize (token)"| P6
+  P1 -->|"Authorize (token)"| P6
+
+  %% Search index updates and background tasks
+  P2 -->|"Index Patent"| D8
+  P7 -->|"Reindex / Indexing"| D8
+
+  %% Notes / Legend
+  Legend[["Legend:\n- Processes P1..P7\n- Data stores D1..D8\n- External: Auth/S3/Email\n- Asynchronous export uses Background Worker (P7)"]]
+  class Legend note
+  Legend -.-> SYSTEM
+
+  %% Sensitivity hint (visual) - mark flows carrying tokens or PII
+  P6 ---|"Token/PII"| D6
+  style P6 stroke:#b30000,stroke-width:2px
+
+  %% layout hints
+  D8 --- D1
+  D1 --- D2
+
+  %% end

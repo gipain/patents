@@ -1,0 +1,246 @@
+.author-detail {
+  padding: 2rem 0;
+  background: var(--gray-50);
+  min-height: calc(100vh - 200px);
+}
+
+.author-profile {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.profile-info h1 {
+  font-size: 1.75rem;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.profile-degree {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-position {
+  color: var(--gray-600);
+  margin-bottom: 0.5rem;
+}
+
+.profile-org {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-500);
+  font-size: 0.9rem;
+}
+
+.profile-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-600);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.contact-item:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.profile-bio {
+  margin-bottom: 2rem;
+}
+
+.profile-bio h3 {
+  font-size: 1rem;
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+}
+
+.profile-bio p {
+  color: var(--gray-600);
+  line-height: 1.8;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--gray-50);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-card svg {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+.stat-card .stat-label {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+/* Works sections */
+.author-works {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.works-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.works-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.works-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.work-card {
+  display: block;
+  padding: 1.25rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.work-card:hover {
+  background: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.work-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.work-number {
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.work-type {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--gray-200);
+  border-radius: 4px;
+  color: var(--gray-600);
+  text-transform: uppercase;
+}
+
+.work-year {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.work-card h4 {
+  font-size: 1rem;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.work-date,
+.work-journal {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-org {
+    justify-content: center;
+  }
+  
+  .profile-contacts {
+    justify-content: center;
+  }
+  
+  .profile-stats {
+    flex-direction: column;
+  }
+  
+  .works-list {
+    grid-template-columns: 1fr;
+  }
+}

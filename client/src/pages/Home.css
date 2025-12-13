@@ -1,0 +1,295 @@
+.home {
+  min-height: 100vh;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.hero-search {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-search input {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.hero-search button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: none;
+  background: var(--primary-dark);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hero-search button:hover {
+  background: #1e40af;
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.hero-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Sections */
+.section {
+  padding: 60px 0;
+}
+
+.section-alt {
+  background: var(--bg);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.section-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.section-link:hover {
+  color: var(--primary-dark);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 40px;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Patent Card */
+.patent-card .patent-number {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.patent-card .patent-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.patent-card .patent-title a {
+  color: var(--text);
+}
+
+.patent-card .patent-title a:hover {
+  color: var(--primary);
+}
+
+.patent-card .patent-abstract {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.patent-card .patent-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Document Card */
+.document-card .document-type {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--info);
+  margin-bottom: 8px;
+}
+
+.document-card .document-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.document-card .document-title a {
+  color: var(--text);
+}
+
+.document-card .document-title a:hover {
+  color: var(--primary);
+}
+
+.document-card .document-abstract {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.document-card .document-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+}
+
+/* Features */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 30px;
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 50%;
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 50px 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero h2 {
+    font-size: 1.1rem;
+  }
+
+  .hero-search {
+    flex-direction: column;
+  }
+
+  .hero-search button {
+    justify-content: center;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

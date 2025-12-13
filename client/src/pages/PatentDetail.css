@@ -1,0 +1,376 @@
+.patent-detail {
+  padding: 2rem 0;
+  background: var(--gray-50);
+  min-height: calc(100vh - 200px);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-600);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary-color);
+}
+
+.detail-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.detail-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+.detail-main,
+.detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.patent-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.patent-number {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  background: var(--gray-100);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.patent-type {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  background: var(--gray-100);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.patent-title {
+  font-size: 1.75rem;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h3 {
+  font-size: 1.125rem;
+  color: var(--gray-700);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-section.expandable .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.detail-section.expandable .section-header h3 {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  transition: color 0.2s;
+}
+
+.detail-section.expandable .section-header h3:hover {
+  color: var(--primary-color);
+}
+
+.btn-icon {
+  background: none;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--gray-500);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  background: var(--gray-100);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.section-content {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.full-text {
+  color: var(--gray-700);
+  line-height: 1.9;
+  text-align: justify;
+  white-space: pre-wrap;
+  font-size: 1rem;
+}
+
+.detail-section p {
+  color: var(--gray-600);
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.claims-text {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  background: var(--gray-50);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Sidebar cards */
+.detail-sidebar .card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.detail-sidebar .card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.detail-sidebar .card-header h3 {
+  font-size: 1rem;
+  color: var(--gray-700);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-sidebar .card-body {
+  padding: 1.25rem;
+}
+
+/* Info list */
+.info-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.info-list dt {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.info-list dt:first-child {
+  margin-top: 0;
+}
+
+.info-list dd {
+  color: var(--gray-800);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Authors list */
+.authors-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.authors-list li {
+  display: flex;
+  flex-direction: column;
+}
+
+.authors-list a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.authors-list a:hover {
+  text-decoration: underline;
+}
+
+.author-org {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+}
+
+/* Category link */
+.category-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+}
+
+.category-link:hover {
+  text-decoration: underline;
+}
+
+.category-code {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-top: 0.25rem;
+  font-family: "Courier New", monospace;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Cited patents list */
+.cited-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cited-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.cited-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cited-list li:first-child {
+  padding-top: 0;
+}
+
+.cited-list a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.cited-list a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-sidebar {
+    order: -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-actions {
+    width: 100%;
+  }
+
+  .detail-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .patent-title {
+    font-size: 1.25rem;
+  }
+
+  .detail-sidebar {
+    grid-template-columns: 1fr;
+  }
+}

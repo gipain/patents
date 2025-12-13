@@ -1,0 +1,77 @@
+%% IDEF0-style diagram (Level 0) for NTI Patents System represented in Mermaid
+%% ICOM: Inputs -> Function -> Outputs ; Controls (top) ; Mechanisms (bottom)
+flowchart TB
+  classDef func fill:#cfe8ff,stroke:#0b5394,stroke-width:1px
+  classDef io fill:#ffffff,stroke:#333,stroke-dasharray: 2 2
+  classDef ctrl fill:#f6f6f6,stroke:#666
+  classDef mech fill:#f8f9c6,stroke:#333
+
+  %% A0 - System box
+  subgraph A0["A0: NTI Patents System"]
+    direction LR
+    A0Box["A0\nManage patents, search, bookmarks, export, analytics"]:::func
+  end
+
+  %% Inputs / Controls / Mechanisms / Outputs for A0 (visual bands)
+  Inputs["Inputs:\n- User requests (search, CRUD, export)\n- External data (auth, uploads)"]:::io
+  Controls["Controls:\n- API contract / REST endpoints\n- Auth policy / Roles\n- Data retention & privacy rules"]:::ctrl
+  Mechanisms["Mechanisms:\n- Frontend (React)\n- Backend API (Express)\n- DB, Search Index, Worker"]:::mech
+  Outputs["Outputs:\n- Search results\n- Persisted patents & docs\n- Export files / reports\n- Dashboard metrics"]:::io
+
+  Inputs --> A0Box
+  Controls --> A0Box
+  Mechanisms --> A0Box
+  A0Box --> Outputs
+
+  %% Decomposition: A1..A6 functions (Level 0 boxes)
+  subgraph Level0["Level 0: Decomposed Functions"]
+    direction TB
+    A1["A1: Search / Query"]:::func
+    A2["A2: Patent CRUD"]:::func
+    A3["A3: Bookmarks & Notes"]:::func
+    A4["A4: Export / Report Generation"]:::func
+    A5["A5: Dashboard & Analytics"]:::func
+    A6["A6: Auth & Access Control"]:::func
+  end
+
+  %% Positioning arrows (ICOM) - Inputs and Outputs per function
+  Inputs -->|"SearchQuery, Filters"| A1
+  A1 -->|"SearchResults (JSON)"| Outputs
+  A1 -->|"SearchHistory entry"| D6["D6: SearchHistory"]:::io
+
+  Inputs -->|"Create/Update/Delete requests"| A2
+  A2 -->|"Persist Patent/Docs"| D1["D1: Patents"]:::io
+  A2 -->|"Update Authors / Categories"| D2["D2: Authors"]:::io
+  A2 -->|"Index update"| D8["D8: SearchIndex"]:::io
+  A2 -->|"Response"| Outputs
+
+  Inputs -->|"Bookmark request"| A3
+  A3 -->|"Bookmark record"| D5["D5: Bookmarks"]:::io
+  A3 -->|"Ack/Status"| Outputs
+
+  Inputs -->|"Export request"| A4
+  A4 -->|"Create Export Job"| Q["Queue / Job"]:::mech
+  Q -->|"Process Job"| A4
+  A4 -->|"Export file"| D7["D7: Exports / Files"]:::io
+  A4 -->|"Store object"| S3["S3 / Object Storage"]:::mech
+  A4 -->|"Download link"| Outputs
+
+  Inputs -->|"Dashboard request"| A5
+  A5 -->|"Read metrics"| D1 & D2 & D3["D3: Documents"]:::io
+  A5 -->|"Return stats"| Outputs
+
+  Inputs -->|"Auth token"| A6
+  Controls -->|"Auth policies"| A6
+  A6 -->|"Validated / Denied"| A2 & A1 & A3 & A4 & A5
+  A6 -->|"User session / Token"| Outputs
+
+  %% Legend and notes
+  class Legend note
+  Legend[["Legend:\nInputs -> Function -> Outputs; Controls shown above functions; Mechanisms under functions\nData stores: D1..D8 as in Level-0 DFD\nQueue represents background worker mechanism"]]
+  Legend -.-> Level0
+
+  %% Simple styling for data stores and queue
+  class D1,D2,D3,D5,D6,D7,D8 io
+  class Q mech
+
+  %% end
